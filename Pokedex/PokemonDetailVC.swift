@@ -37,6 +37,12 @@ class PokemonDetailVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     func updateUI() {
+        let image = UIImage(named: "\(pokemon.pokedexId)")
+        
+        mainImage.image = image
+        currentEvoImage.image = image
+        pokedexLabel.text = "\(pokemon.pokedexId)"
+        typeLabel.text = pokemon.type
         nameLabel.text = pokemon.name.capitalized
         heightLabel.text = pokemon.height
         weightLabel.text = pokemon.weight
