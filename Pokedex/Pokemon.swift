@@ -124,6 +124,20 @@ class Pokemon {
                 } else {
                     self._type = ""
                 }
+                
+                if let decriptionArray = dict["descriptions"] as? [Dictionary<String, String>] , decriptionArray.count > 0 {
+                    if let url = decriptionArray[0]["resource_uri"] {
+                        let descriptionUrl = URL_BASE.appending(url)
+                        Alamofire.request(descriptionUrl).responseJSON(completionHandler: { (response) in
+                            if let descDict = response.result.value as? Dictionary<String, AnyObject> {
+                                if let descrption = descDict["description"] as? String {
+                                    self._description = descrption.replacingOccurrences(of: "POKMON", with: "Pokemon")
+                                }
+                            }
+                            completed()
+                        })
+                    }
+                }
             }
             completed()
         }

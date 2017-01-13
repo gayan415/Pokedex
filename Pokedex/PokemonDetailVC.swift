@@ -48,5 +48,6 @@ class PokemonDetailVC: UIViewController {
         weightLabel.text = pokemon.weight
         attackLabel.text = pokemon.attack
         defenceLabel.text = pokemon.defence
+        descriptionLabel.text = pokemon.description
     }
 }
